@@ -2,3 +2,4 @@ sentence-transformers
 openai
 pandas
 openpyxl
+streamlit
