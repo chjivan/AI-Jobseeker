@@ -293,7 +293,7 @@ def get_response(message,resume_text=None):
 
 # ========== Streamlit Main App ==========
 
-@st.cache_data
+@st.cache_datahttps://github.com/chjivan/AI-Jobseeker/blob/main/JobSeeker_en.py
 def load_data():
     """
     Loads the English-version Excel data for job listings.
@@ -301,6 +301,23 @@ def load_data():
     """
     file_path = 'Recruitment_Data_English 1.xlsx'
     return pd.read_excel(file_path, engine='openpyxl')
+
+from docx import Document
+
+def load_docx(file_path):
+    """
+    Load a .docx file and return its content.
+    """
+    doc = Document(file_path)
+    content = []
+    for para in doc.paragraphs:
+        content.append(para.text)
+    return "\n".join(content)
+
+file_path = "Recruitment_Data_English 1.xlsx"
+text = load_docx(file_path)
+print(text)
+
 
 @st.cache_resource
 def load_embedding_model(model_name='sentence-transformers/all-MiniLM-L6-v2'):
