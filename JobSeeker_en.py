@@ -300,7 +300,7 @@ def load_data():
     Make sure the file path and column names match your dataset structure.
     """
     file_path = 'Recruitment_Data_English 1.xlsx'
-    return pd.read_excel(file_path)
+    return pd.read_excel(file_path, engine='openpyxl')
 
 @st.cache_resource
 def load_embedding_model(model_name='sentence-transformers/all-MiniLM-L6-v2'):
