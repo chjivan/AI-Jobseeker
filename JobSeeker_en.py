@@ -293,7 +293,11 @@ def get_response(message,resume_text=None):
 
 # ========== Streamlit Main App ==========
 
-@st.cache_datahttps://github.com/chjivan/AI-Jobseeker/blob/main/JobSeeker_en.py
+@st.cache_data
+def your_function_name():
+    
+    pass
+    
 def load_data():
     """
     Loads the English-version Excel data for job listings.
