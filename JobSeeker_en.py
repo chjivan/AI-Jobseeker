@@ -304,25 +304,40 @@ def load_data():
     Make sure the file path and column names match your dataset structure.
     """
     file_path = 'Recruitment_Data_English 1.xlsx'
-    if not os.path.exists(file_path):  # 检查文件是否存在
-        raise FileNotFoundError(f"File not found: {file_path}")
+    
     return pd.read_excel(file_path, engine='openpyxl')
 
+import os
 from docx import Document
 
 def load_docx(file_path):
     """
-    Load a .docx file and return its content.
+    Load content from a .docx file and return its text.
     """
-    doc = Document(file_path)
-    content = []
-    for para in doc.paragraphs:
-        content.append(para.text)
-    return "\n".join(content)
+    # 检查文件是否存在
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"File not found: {file_path}")
+    
+    # 确保文件扩展名正确
+    if not file_path.endswith('.docx'):
+        raise ValueError("Invalid file type. Please provide a .docx file.")
 
-file_path = "Recruitment_Data_English 1.xlsx"
-text = load_docx(file_path)
-print(text)
+    # 读取 .docx 文件内容
+    try:
+        doc = Document(file_path)
+        content = "\n".join([para.text for para in doc.paragraphs])
+        return content
+    except Exception as e:
+        raise ValueError(f"Error reading the DOCX file: {e}")
+
+# 示例调用
+file_path = "Recruitment_Data_English 1.xlsx"  # 确保此文件存在
+try:
+    text = load_docx(file_path)
+    print("Document content loaded successfully:")
+    print(text)
+except Exception as e:
+    print(e)
 
 
 @st.cache_resource
