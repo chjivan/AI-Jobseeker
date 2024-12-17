@@ -299,7 +299,7 @@ def load_data():
     Loads the English-version Excel data for job listings.
     Make sure the file path and column names match your dataset structure.
     """
-    file_path = 'C:/Users/Billy/Desktop/JobSeeker/Recruitment_Data_English.xlsx'
+    file_path = 'Recruitment_Data_English 1.xlsx'
     return pd.read_excel(file_path)
 
 @st.cache_resource
