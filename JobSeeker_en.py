@@ -43,7 +43,7 @@ def render_chat():
         if role == "user":
             chat_html += f'<div class="chat-message-user">👤 <b>You:</b> {content}</div>'
         else:
-            chat_html += f'<div class="chat-message-ai">🤖 <b>AI Assistant:</b> {content}</div>'
+            chat_html += f'<div class="chat-message-ai">🤖 <b>Nexa:</b> {content}</div>'
     chat_html += '</div>'
     st.markdown(chat_html, unsafe_allow_html=True)
 
@@ -93,7 +93,7 @@ def inject_css():
     }
         
     .chat-container:empty::before {
-        content: "Your next job is just a chat away with AI"; /* 提示文字 */
+        content: "Your next job is just a chat away with Nexa"; /* 提示文字 */
         color: #c8cacc; /* 暗灰色 */
         font-size: 28px; /* 字体大小 */
         position: absolute; /* 绝对定位，确保文字在容器中间 */
@@ -658,7 +658,8 @@ def main():
     inject_css()
 
     with col1:
-        st.title("🌟JobSeeker Smart Application Assistant (Beta)")
+        st.title("🌟Joblytic (Beta)")
+        st.subheader("Your entire job search. Powered by one App")
 
         with st.spinner('Loading recruitment data, please wait...'):
             data = load_data()
@@ -810,7 +811,7 @@ def main():
 
     # ========== Right Column: AI Chatbox ==========
     with col2:
-        st.title("🤖 AI Career Consulting Chat")
+        st.markdown("<h1 style='text-align:center;'>🤖 Nexa: Your AI Career Consultant</h1>", unsafe_allow_html=True)
         
         # File Upload Section
         st.subheader("📄 Upload Your Resume")
@@ -836,7 +837,7 @@ def main():
             except Exception as e:
                 st.error(f"❌ Upload failed, please check your file: {e}")
         
-        st.markdown("### 💬 Chat with AI")
+        st.markdown("### 💬 Chat with Nexa")
 
         # Initialize chat history
         if "chat_history" not in st.session_state:
